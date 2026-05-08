@@ -1,4 +1,5 @@
-import PortfolioPage from "../pages/portfolio/ui/PortfolioPage";
+import PortfolioPage from "../../pages/portfolio/ui/PortfolioPage";
+
 
 export default function Home() {
   return (
