@@ -8,11 +8,13 @@ interface RequestOptions extends RequestInit{
 export async function httpClient<T>(path: string, options: RequestOptions = {}): Promise<T>{
     const {token, ...init} = options;
 
+    const isFormData = init.body instanceof FormData
+
     const headers: HeadersInit = {
-        'Content-Type': 'application/json',
-        ...(token ? { Authorization:  `Bearer ${token}`} : {}),
+        ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
         ...(init.headers ?? {}),
-    };
+    }
 
     const res = await fetch(`${env.apiUrl}${path}`, {...init, headers})
 
@@ -20,5 +22,8 @@ export async function httpClient<T>(path: string, options: RequestOptions = {}):
         throw new Error(`HTTP ${res.status} - ${path}`)
     }
 
-    return res.json() as Promise<T>;
+    const text = await res.text()
+    if (!text) return undefined as T
+
+    return JSON.parse(text) as T;
 }
