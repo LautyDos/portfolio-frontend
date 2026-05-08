@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Geist, Geist_Mono, The_Nautigal } from "next/font/google";
-import { Navbar } from "../widgets/navbar/ui/Navbar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,7 +41,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} ${theNautigal.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar></Navbar>
         {children}</body>
     </html>
   );

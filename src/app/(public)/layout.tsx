@@ -1,0 +1,11 @@
+import { Navbar } from "../../widgets/navbar/ui/Navbar";
+
+
+export default function PublicLayout({children}: {children: React.ReactNode}){
+    return (
+        <>
+            <Navbar></Navbar>
+            {children}
+        </>
+    )
+}
