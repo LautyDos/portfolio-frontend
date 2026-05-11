@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
-import type { LoginRequest, LoginResponse } from "../../../../features/login/model/types";
-import { httpClient } from "../../../../shared/api/httpClient";
+import { cookies } from "next/headers"
+import type { LoginRequest, LoginResponse } from "@/features/login/model/types"
+import { httpClient } from "@/shared/api/httpClient"
 
 export async function POST(request: Request){
     const body: LoginRequest = await request.json()

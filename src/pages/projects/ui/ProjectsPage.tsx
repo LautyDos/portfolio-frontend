@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import type { ProjectDto } from "../../../entities/project/model/types"
-import { DeleteProjectButton } from "../../../features/delete-project/ui/DeleteProjectButton"
-import { ToggleFeaturedButton } from "../../../features/toggle-featured/ui/ToggleFeaturedButton"
+import type { ProjectDto } from "@/entities/project/model/types"
+import { DeleteProjectButton } from "@/features/delete-project/ui/DeleteProjectButton"
+import { ToggleFeaturedButton } from "@/features/toggle-featured/ui/ToggleFeaturedButton"
 
 type ProjectPageProps = {
     projects: ProjectDto[]

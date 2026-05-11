@@ -1,5 +1,5 @@
-import { cookies } from "next/headers";
-import { httpClient } from "../../../../../../shared/api/httpClient";
+import { cookies } from "next/headers"
+import { httpClient } from "@/shared/api/httpClient"
 
 export async function PATCH(request: Request, {params}: {params: Promise<{id: string}>}){
     const cookieStore = await cookies()
@@ -11,7 +11,7 @@ export async function PATCH(request: Request, {params}: {params: Promise<{id: st
 
     try{
         await httpClient(`/projects/${id}/featured`, {
-            method:'PATCH',
+            method: 'PATCH',
             body: JSON.stringify(body),
             token,
         })

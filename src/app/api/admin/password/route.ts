@@ -1,7 +1,7 @@
-import { cookies } from "next/headers";
-import type { UserDto } from "../../../../entities/user/model/types";
-import type { ChangePasswordRequest } from "../../../../features/change-password/model/types";
-import { httpClient } from "../../../../shared/api/httpClient";
+import { cookies } from "next/headers"
+import type { UserDto } from "@/entities/user/model/types"
+import type { ChangePasswordRequest } from "@/features/change-password/model/types"
+import { httpClient } from "@/shared/api/httpClient"
 
 export async function PUT(request: Request){
     const cookieStore = await cookies()
@@ -15,7 +15,7 @@ export async function PUT(request: Request){
     try{
         await httpClient(`/users/${me.id}/password`, {
             method: 'PUT',
-            body:JSON.stringify(body),
+            body: JSON.stringify(body),
             token,
         })
         return Response.json({ok: true})

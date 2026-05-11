@@ -1,6 +1,6 @@
-import { LoginForm } from "../../../features/login/ui/LoginForm";
-import { DesktopBackground } from "../../../shared/ui/desktop-background/DesktopBackground";
-import { TerminalWindow } from "../../../shared/ui/terminal-window/TerminalWindow";
+import { LoginForm } from "@/features/login/ui/LoginForm"
+import { DesktopBackground } from "@/shared/ui/desktop-background/DesktopBackground"
+import { TerminalWindow } from "@/shared/ui/terminal-window/TerminalWindow"
 
 export default function LoginPage(){
     return(
@@ -11,7 +11,7 @@ export default function LoginPage(){
                         <p className="text-accent font-mono text-sm">$ sudo access --panel admin</p>
                         <p className="text-muted-foreground font-mono text-xs">Introduce tus credenciales para continuar</p>
                     </div>
-                    <LoginForm></LoginForm>
+                    <LoginForm />
                 </TerminalWindow>
             </main>
         </DesktopBackground>

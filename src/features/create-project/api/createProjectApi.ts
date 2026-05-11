@@ -1,6 +1,5 @@
-import type { ProjectDto } from "../../../entities/project/model/types";
-import type { CreateProjectRequest } from "../model/types";
-
+import type { ProjectDto } from "@/entities/project/model/types"
+import type { CreateProjectRequest } from "../model/types"
 
 export async function createProjectApi(data: CreateProjectRequest): Promise<ProjectDto>{
     const res = await fetch('/api/admin/projects', {

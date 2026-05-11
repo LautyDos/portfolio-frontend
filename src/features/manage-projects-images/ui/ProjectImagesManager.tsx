@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import type { ProjectImageDto } from "../../../entities/project/model/types"
+import type { ProjectImageDto } from "@/entities/project/model/types"
 import { deleteProjectImageApi } from "../api/deleteProjectImageApi"
 import { updateImageOrderApi } from "../api/updateImageOrderApi"
 import { uploadProjectImageApi } from "../api/uploadProjectImageApi"
@@ -49,7 +49,7 @@ export function ProjectImagesManager({projectId, initialImages}: ProjectImagesMa
                 prev
                 .map(img => img.id === imageId ? {...img, order: newOrder} : img)
                 .sort((a,b) => a.order - b.order)
-            ) 
+            )
         } catch{
             setError('No se pudo actualizar el orden')
         }
@@ -58,22 +58,21 @@ export function ProjectImagesManager({projectId, initialImages}: ProjectImagesMa
     const sorted = [...images].sort((a,b) => a.order - b.order)
 
     return (
-        <div className="flex flex-col gap-4">  
+        <div className="flex flex-col gap-4">
             <div className="flex flex-wrap gap-4">
                 {sorted.map(img => (
                     <div key={img.id} className="flex flex-col gap-2 items-center">
-                        <Image src={img.url} alt="" width={120} height={80} className="object-cover rounded border border-border"/>
+                        <Image src={img.url} alt="" width={120} height={80} className="object-cover rounded border border-border" />
                         <div className="flex gap-2 items-center">
                             <input
-                            type="number"
-                            value={img.order}
-                            min={1}
-                            onChange={e => handleOrderChange(img.id, Number(e.target.value))}
-                            className="w-12 text-xs font-mono text-center bg-surface border border-border rounded px-1 py-0.5"
-                            >
-                            </input>
+                                type="number"
+                                value={img.order}
+                                min={1}
+                                onChange={e => handleOrderChange(img.id, Number(e.target.value))}
+                                className="w-12 text-xs font-mono text-center bg-surface border border-border rounded px-1 py-0.5"
+                            />
                             <button onClick={() => handleDelete(img.id)} className="text-xs font-mono text-muted-foreground hover:text-red-400">
-                                x
+                                ✕
                             </button>
                         </div>
                     </div>
@@ -82,13 +81,13 @@ export function ProjectImagesManager({projectId, initialImages}: ProjectImagesMa
 
             <label className="flex flex-col gap-1 cursor-pointer">
                 <span className="text-xs text-muted-foreground font-mono">agregar imagen</span>
-                <input 
-                type="file"
-                accept="image/*"
-                onChange={handleUpload}
-                disabled={uploading}
-                className="text-sm font-mono text-muted-foreground"
-                ></input>
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleUpload}
+                    disabled={uploading}
+                    className="text-sm font-mono text-muted-foreground"
+                />
             </label>
 
             {uploading && <p className="text-sm font-mono text-muted-foreground">subiendo...</p>}

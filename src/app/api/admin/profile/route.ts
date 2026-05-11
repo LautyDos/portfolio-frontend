@@ -1,9 +1,7 @@
-import { cookies } from "next/headers";
-import type { UserDto } from "../../../../entities/user/model/types";
-import type { EditProfileRequest } from "../../../../features/edit-profile/model/types";
-import { httpClient } from "../../../../shared/api/httpClient";
-
-
+import { cookies } from "next/headers"
+import type { UserDto } from "@/entities/user/model/types"
+import type { EditProfileRequest } from "@/features/edit-profile/model/types"
+import { httpClient } from "@/shared/api/httpClient"
 
 export async function PUT(request: Request){
     const cookieStore = await cookies()

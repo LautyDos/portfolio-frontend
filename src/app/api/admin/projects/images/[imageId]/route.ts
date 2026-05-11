@@ -1,13 +1,11 @@
-import { cookies } from "next/headers";
-import { httpClient } from "../../../../../../shared/api/httpClient";
-
-
+import { cookies } from "next/headers"
+import { httpClient } from "@/shared/api/httpClient"
 
 export async function PATCH(request: Request, {params}: {params: Promise<{imageId: string}>}){
     const cookieStore = await cookies()
     const token = cookieStore.get('auth_token')?.value
     if (!token) return Response.json({error: 'No autenticado'}, {status: 401})
-    
+
     const {imageId} = await params
     const body = await request.json()
 
@@ -28,7 +26,7 @@ export async function DELETE(_request: Request, { params }: {params: Promise<{im
     const token = cookieStore.get('auth_token')?.value
     if (!token) return Response.json({error: 'No autenticado'}, {status: 401})
 
-    const {imageId} = await params 
+    const {imageId} = await params
 
     try {
         await httpClient(`/media/projects/images/${imageId}`, {method: 'DELETE', token})
