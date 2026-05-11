@@ -1,7 +1,7 @@
 
 export async function toggleFeaturedApi(id: string, featured: boolean){
     const res = await fetch(`/api/admin/projects/${id}/featured`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({featured})
     })

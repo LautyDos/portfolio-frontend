@@ -26,7 +26,7 @@ export function ToggleFeaturedButton({projectId, initialFeatured}: ToggleFeature
         disabled={loading}
         className={`text-xs font-mono transition-colors ${featured ? 'text-accent': 'text-muted-foreground hover:text-accent'}`}
         >
-        {featured ? '* destacado': '☆ destacar'}
+        {featured ? '★ destacado': '☆ destacar'}
         </button>
     )
 }

@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { ProjectDto } from "../../../../entities/project/model/types";
+import type { ProjectDto } from "../../../../entities/project/model/types";
 import type { CreateProjectRequest } from "../../../../features/create-project/model/types";
 import { httpClient } from "../../../../shared/api/httpClient";
 

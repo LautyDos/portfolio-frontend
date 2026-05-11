@@ -30,8 +30,8 @@ export function DeleteProjectButton({projectId, onDeleted}: DeleteProjectButtonP
                 >
                     {loading ? 'eliminando...' : 'confirmar'}
                 </button>
-                <button onClick={() => setConfirming(false)} className="text-xs font-mono text-red-400 hover:text-red-300">
-                    canclear
+                <button onClick={() => setConfirming(false)} className="text-xs font-mono text-muted-foreground hover:text-foreground">
+                    cancelar
                 </button>
             </span>
         )
