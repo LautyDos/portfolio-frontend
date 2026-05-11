@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
-import type { EditProjectRequest } from "../../../../../features/edit-project/model/types";
-import { httpClient } from "../../../../../shared/api/httpClient";
+import { cookies } from "next/headers"
+import type { EditProjectRequest } from "@/features/edit-project/model/types"
+import { httpClient } from "@/shared/api/httpClient"
 
 export async function PUT(request: Request, {params}: {params: Promise<{id: string}>}){
     const cookieStore = await cookies()
@@ -8,7 +8,6 @@ export async function PUT(request: Request, {params}: {params: Promise<{id: stri
     if(!token) return Response.json({error: 'No autenticado'}, {status: 401})
 
     const {id} = await params
-
     const body: EditProjectRequest = await request.json()
 
     try {

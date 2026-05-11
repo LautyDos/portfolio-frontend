@@ -1,7 +1,7 @@
 import { cookies } from "next/headers"
-import type { ProjectDto } from "../../../../../entities/project/model/types"
-import { ProjectFormPage } from "../../../../../pages/projects/ui/ProjectFormPage"
-import { httpClient } from "../../../../../shared/api/httpClient"
+import type { ProjectDto } from "@/entities/project/model/types"
+import { ProjectFormPage } from "@/pages/projects/ui/ProjectFormPage"
+import { httpClient } from "@/shared/api/httpClient"
 
 export default async function EditProjectPage({params}: {params: Promise<{id: string}>}){
     const {id} = await params
@@ -10,5 +10,5 @@ export default async function EditProjectPage({params}: {params: Promise<{id: st
 
     const project = await httpClient<ProjectDto>(`/projects/${id}`, {token})
 
-    return <ProjectFormPage project={project}></ProjectFormPage>
+    return <ProjectFormPage project={project} />
 }

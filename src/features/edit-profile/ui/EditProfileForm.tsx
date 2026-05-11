@@ -1,14 +1,13 @@
 'use client'
 
-import { useState } from "react";
-import type { UserDto } from "../../../entities/user/model/types";
-import { editProfileApi } from "../api/editProfileApi";
-import { SubmitButton } from "@/shared/ui/submit-button/SubmitButton";
+import { useState } from "react"
+import type { UserDto } from "@/entities/user/model/types"
+import { editProfileApi } from "../api/editProfileApi"
+import { SubmitButton } from "@/shared/ui/submit-button/SubmitButton"
 
 type EditProfileFormProps = {
     user: UserDto
 }
-
 
 export function EditProfileForm({user}: EditProfileFormProps){
     const [name, setName] = useState(user.name)
@@ -34,22 +33,20 @@ export function EditProfileForm({user}: EditProfileFormProps){
             } finally {
                 setLoading(false)
             }
-        }} 
+        }}
         className="flex flex-col gap-4 max-w-md"
         >
-            <Field label="nombre" value={name} onChange={setName}></Field>
-            <Field label="email" value={email} onChange={setEmail}></Field>
-            <Field label="ubicación" value={location} onChange={setLocation}></Field>
-            <Field label="bio" value={bio} onChange={setBio} textarea></Field>
+            <Field label="nombre" value={name} onChange={setName} />
+            <Field label="email" value={email} onChange={setEmail} />
+            <Field label="ubicación" value={location} onChange={setLocation} />
+            <Field label="bio" value={bio} onChange={setBio} textarea />
 
             {error && <p className="text-sm font-mono text-red-400">{error}</p>}
             {success && <p className="text-sm font-mono text-accent">✓ Perfil actualizado</p>}
 
             <SubmitButton loading={loading} label="guardar" />
-
         </form>
     )
-
 }
 
 type FieldProps = {
@@ -67,9 +64,9 @@ function Field({label, value, onChange, type = 'text', textarea = false}: FieldP
             <label className="text-xs text-muted-foreground font-mono">
                 {label}
             </label>
-            {textarea 
-                ? <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={3} className={`${base} resize-none`}></textarea>
-                : <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className={base}></input>
+            {textarea
+                ? <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={3} className={`${base} resize-none`} />
+                : <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className={base} />
             }
         </div>
     )

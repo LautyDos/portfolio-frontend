@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
-import { UserDto } from "../../../../entities/user/model/types";
-import { httpClient } from "../../../../shared/api/httpClient";
+import { cookies } from "next/headers"
+import type { UserDto } from "@/entities/user/model/types"
+import { httpClient } from "@/shared/api/httpClient"
 
 export async function POST(request: Request){
     const cookieStore = await cookies()
