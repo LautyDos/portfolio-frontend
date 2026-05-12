@@ -3,6 +3,7 @@
 import { useState } from "react"
 import type { UserDto } from "@/entities/user/model/types"
 import { editProfileApi } from "../api/editProfileApi"
+import { FormField } from "@/shared/ui/form-field/FormField"
 import { SubmitButton } from "@/shared/ui/submit-button/SubmitButton"
 
 type EditProfileFormProps = {
@@ -36,10 +37,10 @@ export function EditProfileForm({user}: EditProfileFormProps){
         }}
         className="flex flex-col gap-4 max-w-md"
         >
-            <Field label="nombre" value={name} onChange={setName} />
-            <Field label="email" value={email} onChange={setEmail} />
-            <Field label="ubicación" value={location} onChange={setLocation} />
-            <Field label="bio" value={bio} onChange={setBio} textarea />
+            <FormField label="nombre" value={name} onChange={setName} />
+            <FormField label="email" value={email} onChange={setEmail} />
+            <FormField label="ubicación" value={location} onChange={setLocation} />
+            <FormField label="bio" value={bio} onChange={setBio} textarea />
 
             {error && <p className="text-sm font-mono text-red-400">{error}</p>}
             {success && <p className="text-sm font-mono text-accent">✓ Perfil actualizado</p>}
@@ -49,25 +50,3 @@ export function EditProfileForm({user}: EditProfileFormProps){
     )
 }
 
-type FieldProps = {
-    label: string
-    value: string
-    onChange: (v: string) => void
-    type?: string
-    textarea?: boolean
-}
-
-function Field({label, value, onChange, type = 'text', textarea = false}: FieldProps){
-    const base = "bg-surface border border-border rounded px-3 py-2 text-sm font-mono text-foreground focus:outline-none focus:border-accent w-full"
-    return (
-        <div className="flex flex-col gap-1">
-            <label className="text-xs text-muted-foreground font-mono">
-                {label}
-            </label>
-            {textarea
-                ? <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={3} className={`${base} resize-none`} />
-                : <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className={base} />
-            }
-        </div>
-    )
-}

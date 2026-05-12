@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import type { ProjectDto } from "@/entities/project/model/types"
+import { FormField } from "@/shared/ui/form-field/FormField"
 import { SubmitButton } from "@/shared/ui/submit-button/SubmitButton"
 import { createProjectApi } from "@/features/create-project/api/createProjectApi"
 import { editProjectApi } from "@/features/edit-project/api/editProjectApi"
@@ -44,10 +45,10 @@ export function ProjectForm({project}: ProjectFormProps){
         }}
         className="flex flex-col gap-4 max-w-md"
         >
-            <Field label="título" value={title} onChange={setTitle} required />
-            <Field label="descripción" value={description} onChange={setDescription} textarea />
-            <Field label="repo url" value={repoUrl} onChange={setRepoUrl} type="url" />
-            <Field label="live url" value={liveUrl} onChange={setLiveUrl} type="url" />
+            <FormField label="título" value={title} onChange={setTitle} required />
+            <FormField label="descripción" value={description} onChange={setDescription} textarea />
+            <FormField label="repo url" value={repoUrl} onChange={setRepoUrl} type="url" />
+            <FormField label="live url" value={liveUrl} onChange={setLiveUrl} type="url" />
 
             {error && <p className="text-sm font-mono text-red-400">{error}</p>}
 
@@ -56,23 +57,3 @@ export function ProjectForm({project}: ProjectFormProps){
     )
 }
 
-type FieldProps = {
-    label: string
-    value: string
-    onChange: (v: string) => void
-    type?: string
-    textarea?: boolean
-    required?: boolean
-}
-
-function Field({label, value, onChange, type = 'text', textarea = false, required}: FieldProps){
-    const base = "bg-surface border border-border rounded px-3 py-2 text-sm font-mono text-foreground focus:outline-none focus:border-accent w-full"
-    return (
-        <div className="flex flex-col gap-1">
-            <label className="text-xs text-muted-foreground font-mono">{label}</label>
-            {textarea
-            ? <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={3} required={required} className={`${base} resize-none`} />
-            : <input type={type} value={value} onChange={(e) => onChange(e.target.value)} required={required} className={base} />}
-        </div>
-    )
-}
